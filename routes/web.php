@@ -16,20 +16,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('canciones', function() {
+Route::get('canciones/id?', function($id = null) {
     $canciones = [];
-    $canciones[]=['nombre'=> 'Hola','artista' => 'Yo'];
-    $canciones[]=['nombre'=> 'Adios','artista' => 'Alguien'];
-    return view('canciones', compact('canciones'));
-        // ->with(['canciones' => $canciones]);
-});
 
-Route::get('canciones/{id_cancion}', function($id) {
-    $canciones = [];
     $canciones[]=['nombre'=> 'Hola','artista' => 'Yo'];
     $canciones[]=['nombre'=> 'Adios','artista' => 'Alguien'];
 
-    $cancion = $canciones[$id];
-    return view('detalleCancion', compact('cancion'));
+    if(!is_null($id))
+    {
+        $cancion=$canciones[$id];
+    }else{
+        $cancion = null;
+    }
+
+    return view('canciones', compact('canciones', 'cancion'));
         // ->with(['canciones' => $canciones]);
 });
+
+// Route::get('canciones/{id_cancion}', function($id) {
+//     $canciones = [];
+//     $canciones[]=['nombre'=> 'Hola','artista' => 'Yo'];
+//     $canciones[]=['nombre'=> 'Adios','artista' => 'Alguien'];
+
+//     $cancion = $canciones[$id];
+//     return view('detalleCancion', compact('cancion'));
+//         // ->with(['canciones' => $canciones]);
+// });

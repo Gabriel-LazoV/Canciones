@@ -17,5 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('canciones', function() {
-    return view('canciones');
+    $canciones = [];
+    $canciones[]=['nombre'=> 'Hola','artista' => 'Yo'];
+    $canciones[]=['nombre'=> 'Adios','artista' => 'Alguien'];
+    return view('canciones')
+        ->with(['canciones' => $canciones]);
 });

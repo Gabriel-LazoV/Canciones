@@ -20,6 +20,6 @@ Route::get('canciones', function() {
     $canciones = [];
     $canciones[]=['nombre'=> 'Hola','artista' => 'Yo'];
     $canciones[]=['nombre'=> 'Adios','artista' => 'Alguien'];
-    return view('canciones')
-        ->with(['canciones' => $canciones]);
+    return view('canciones', compact('canciones'));
+        // ->with(['canciones' => $canciones]);
 });

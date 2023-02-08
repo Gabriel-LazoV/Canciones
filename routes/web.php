@@ -23,3 +23,13 @@ Route::get('canciones', function() {
     return view('canciones', compact('canciones'));
         // ->with(['canciones' => $canciones]);
 });
+
+Route::get('canciones/{id_cancion}', function($id) {
+    $canciones = [];
+    $canciones[]=['nombre'=> 'Hola','artista' => 'Yo'];
+    $canciones[]=['nombre'=> 'Adios','artista' => 'Alguien'];
+
+    $cancion = $canciones[$id];
+    return view('detalleCancion', compact('cancion'));
+        // ->with(['canciones' => $canciones]);
+});
